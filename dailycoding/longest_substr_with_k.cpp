@@ -41,8 +41,11 @@ int longestWithK(const string& s, const int k)
     while (right < s.size())
     {
         int currCount = getCount(left, right);
-        if (currCount < k)
+        if (currCount <= k)
         {
+            if (currCount == k)
+                maxLength = max(right - left + 1, maxLength);
+
             right++;
             if (right < s.size())
                 counts[s[right]-'a']++;
@@ -51,13 +54,6 @@ int longestWithK(const string& s, const int k)
         {
             counts[s[left] -'a']--;
             left++;
-        }
-        else
-        {
-            maxLength = max(right - left + 1, maxLength);
-            right++;
-            if (right < s.size())
-                counts[s[right]-'a']++;
         }
     }
     return maxLength;
