@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -52,8 +53,7 @@ string decodeString(string s) {
 
 int main() {
     assert(decodeString("3[a]2[bc]") == "aaabcbc");
-   assert(decodeString("3[a2[c]]") == "accaccacc");
-     assert(decodeString("2[abc]3[cd]ef") == "abcabccdcdcdef");
-     assert(decodeString("leetcode") == "leetcode");
-
+    assert(decodeString("3[a2[c]]") == "accaccacc");
+    assert(decodeString("2[abc]3[cd]ef") == "abcabccdcdcdef");
+    assert(decodeString("leetcode") == "leetcode");
 }

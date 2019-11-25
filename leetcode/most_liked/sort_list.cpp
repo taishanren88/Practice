@@ -1,32 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include "utils.h"
 using namespace std;
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
-
-ListNode* toList(vector<int> nums) {
-    ListNode dummyNode(0);
-    auto itr = &dummyNode;
-    for (auto n : nums ) {
-        itr->next = new ListNode(n);
-        itr = itr->next;
-    }
-    return dummyNode.next;
-}
-
-vector<int> toVector(ListNode* head) {
-    vector<int> result;
-    while (head) {
-        result.push_back(head->val);
-        head = head->next;
-    }
-    return result;
-}
 
  ListNode* sortList(ListNode* head) {
         if (!head || !head->next) {
@@ -82,15 +58,8 @@ vector<int> toVector(ListNode* head) {
     }
 
 int main() {
-    assert(toVector(toList({1})) == vector<int>({1}));
-    assert(toVector(toList({})) == vector<int>({}));
-    assert(toVector(toList({1,2})) == vector<int>({1,2}));
-    assert(toVector(toList({1,2, 3})) == vector<int>({1,2,3}));
-
     assert(toVector(sortList(toList({2,1}))) == vector<int>({1,2}));
     assert(toVector(sortList(toList({2,1,3}))) == vector<int>({1,2, 3}));
     assert(toVector(sortList(toList({4,2,1,3}))) == vector<int>({1,2, 3,4}));
     assert(toVector(sortList(toList({-1,5,3,4,0}))) == vector<int>({-1,0,3,4,5}));
-
-    cout << "All tests passed!" << endl;
 }

@@ -11,7 +11,7 @@ double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         // If total length is odd, max(pX, pY) will be median
         // If total length is even, average(max(px-1, py-1), min(px,pY))
         // Parittion points are offsets where everything left of the max of both offsets is <= min of both offset
-        const int midpoint = (xArr.size() + yArr.size() + 1) / 2;
+        const int midpoint = (xArr.size() + yArr.size()) / 2;
         int start = 0;
         int end = xArr.size();
         while (true)
@@ -26,9 +26,11 @@ double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
             if (pxmin <= pymax && pymin <= pxmax)
             {
                 // found
+                 cout << "found px" << pxmax << " py" << pymax << endl;
+
                 if ( (xArr.size() + yArr.size()) % 2 == 1) // odd
                 {
-                    return max(pxmin, pymin);
+                    return min(pxmax, pymax);
                 }
                 else // even
                     return (max(pxmin, pymin) + min(pxmax, pymax)) / 2.0f;
