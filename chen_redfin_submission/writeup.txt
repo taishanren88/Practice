@@ -1,0 +1,7 @@
+If this were a web-application, I'd deploy this code to
+a web server and make it accessible via a web page such as: www.openfoodtrucks.com.
+When someone visits this web page, it returns an HTML page with the list of food trucks.
+I would also provide an API for developers to be able to fetch the data directly using an HTTP GET request, which would resemble: "GET www.openfoodtrucks.com/api/SF/open".
+Results can be returned as a JSON array to users. Internally, my server would have the entire food truck data stored locally in 7 different files, one for each day of the week. A different file is refreshed daily, depending on the day of week, (in case there are any new updates to food truck open availability). 
+
+Since the data is not large for any given day, I will preload all of the files into memory, Whenever the server notices a difference in the current day's file (maybe check once an hour for file timestamp change), it will refresh that piece of data in memory. The filtering of open food trucks is done on the fly based on the current time of the incoming request. There could be a lot of requests, but by running two machines, it should be sufficient to handle all requests (shouldn't be more than a few hundred per second) and also protects in case of any single machine failures.

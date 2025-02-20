@@ -1,0 +1,12 @@
+To install, you'll need the following dependencies to be able to use Socrata APIs:
+
+1. python2
+2. Python pandas library - run "pip install pandas"
+3. Python sodapy library - run "pip install sodapy"
+
+To run: 
+python2 show-open-food-trucks.py 
+
+Notes:
+I tested on python version :
+Python 2.7.16 and ran on a Macbook Pro.
